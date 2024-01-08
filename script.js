@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(backToTopButton);
 
     window.addEventListener('scroll', function() {
-        // Change navbar style on scroll
+        
         if (window.scrollY > 100) {
             navbar.style.backgroundColor = '#555';
             backToTopButton.style.display = 'block';
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Smooth scroll for navbar links
+  
     const smoothScrollLinks = document.querySelectorAll('a[href*="#"]');
     smoothScrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Back to top functionality
+  
     backToTopButton.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
