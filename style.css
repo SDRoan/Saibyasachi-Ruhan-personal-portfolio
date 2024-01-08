@@ -1,4 +1,4 @@
-/* Reset default browser styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,27 +11,28 @@ html, body {
     background-color: #f7f7f7;
     color: #333;
     line-height: 1.6;
+    transition: background-color 0.3s ease;
 }
 
-/* Fixed header with background */
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #333;
     color: #fff;
-    padding: 10px 5%;
+    padding: 20px;
     position: fixed;
     top: 0;
-    left: 60px; /* Offset for sidebar */
+    left: 0;
     right: 0;
-    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
-    text-align: center;
-    margin: 0;
-    font-size: 24px;
+    font-size: 36px;
+    transition: color 0.3s ease;
 }
 
 nav ul {
@@ -53,9 +54,9 @@ nav ul li a:hover {
     color: #04c;
 }
 
-/* Main content styles */
+
 .container {
-    padding-top: 60px;
+    padding-top: 100px;
     margin-left: 60px; /* Offset for sidebar */
     margin-right: 20px; /* Spacing from the right side of the window */
 }
@@ -65,11 +66,16 @@ section {
     padding: 20px;
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 section h2 {
     margin-bottom: 20px;
     color: #333;
+}
+
+section:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 footer {
@@ -79,11 +85,13 @@ footer {
     color: #fff;
     position: fixed;
     bottom: 0;
-    left: 60px; /* Offset for sidebar */
+    left: 0;
     right: 0;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
 }
 
-/* Sidebar styles */
+
 .sidebar {
     position: fixed;
     left: 0;
@@ -112,7 +120,7 @@ footer {
     font-size: 24px;
 }
 
-/* Skills Section */
+
 #skills {
     background-color: #f9f9f9;
     padding: 20px;
@@ -135,14 +143,19 @@ footer {
     border-radius: 3px;
     font-size: 16px;
     font-weight: bold;
+    transition: transform 0.3s ease;
 }
 
-/* Responsive design for smaller screens */
+.skills-list li:hover {
+    transform: scale(1.1);
+}
+
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         left: 0;
-        padding: 10px;
+        padding: 20px;
     }
 
     nav ul {
@@ -171,7 +184,7 @@ footer {
 
     .container {
         margin: 0;
-        padding-top: 100px; /* Adjust for mobile header */
+        padding-top: 140px; /* Adjust for mobile header */
     }
 
     footer {
