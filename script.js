@@ -1,23 +1,47 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const navbar = document.querySelector('header');
-    const backToTopButton = document.createElement('button');
-    backToTopButton.textContent = '↑ Top';
-    backToTopButton.style.cssText = 'position: fixed; bottom: 20px; right: 20px; display: none; z-index: 1000; padding: 10px;';
+    // Interactive glowing header effect
+    const header = document.querySelector('header');
+    function toggleGlow() {
+        header.classList.toggle('glowing');
+    }
+    header.addEventListener('click', toggleGlow);
 
-    document.body.appendChild(backToTopButton);
+    // Scroll animation for elements with the 'scroll-fade' class
+    const fadeElements = document.querySelectorAll('.scroll-fade');
+    const revealOnScroll = () => {
+        for (let i = 0; i < fadeElements.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = fadeElements[i].getBoundingClientRect().top;
+            const elementVisible = 150; // Adjust as needed
 
-    window.addEventListener('scroll', function() {
-        
-        if (window.scrollY > 100) {
-            navbar.style.backgroundColor = '#555';
-            backToTopButton.style.display = 'block';
-        } else {
-            navbar.style.backgroundColor = 'transparent';
-            backToTopButton.style.display = 'none';
+            if (elementTop < windowHeight - elementVisible) {
+                fadeElements[i].classList.add("visible");
+            } else {
+                fadeElements[i].classList.remove("visible");
+            }
         }
-    });
+    };
 
-  
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll(); // Call on initial load
+
+    // Back to Top Button functionality (if you have one)
+    const backToTopButton = document.querySelector('#back-to-top');
+    if (backToTopButton) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Smooth scrolling for anchor links (optional)
     const smoothScrollLinks = document.querySelectorAll('a[href*="#"]');
     smoothScrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -26,10 +50,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 behavior: 'smooth'
             });
         });
-    });
-
-  
-    backToTopButton.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
